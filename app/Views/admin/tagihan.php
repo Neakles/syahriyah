@@ -30,10 +30,9 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nis</th>
                             <th scope="col">Jenis Pembayaran</th>
+                            <th scope="col">Bulan</th>
                             <th scope="col">Tahun</th>
-                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,19 +41,17 @@
                         foreach ($tagihan as $bill) : ?>
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
-                                <td><?= $bill->nis ?></td>
                                 <td><?= $bill->jenis_pembayaran ?></td>
+                                <td></td>
                                 <td><?= $bill->tahun_ajaran ?></td>
-                                <td>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus_tagihan"><i class="fa-solid fa-fw fa-trash"></i></button>
-                                </td>
                             </tr>
                         <?php endforeach;
                         ?>
                     </tbody>
                 </table>
             </div>
-            <!-- Modal Santri -->
+
+            <!-- Modal Tambah -->
             <div id="tambah_tagihan" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -72,15 +69,8 @@
 
                                         <div class="row justify-content-center mt-3 mb-4">
                                             <div class="col">
-                                                <label for="nis" class="form-label">NIS</label>
-                                                <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan NIS" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="row justify-content-center mt-3 mb-4">
-                                            <div class="col">
-                                                <label for="j_pem" class="form-label">Jenis Pembayaran</label>
-                                                <input type="text" class="form-control" id="j_pem" name="j_pem" placeholder="Masukkan Jenis Pembayaran" required>
+                                                <label for="bulan" class="form-label">Bulan</label>
+                                                <input type="text" class="form-control" id="bulan" name="bulan" placeholder="Masukkan Bulan" required>
                                             </div>
                                         </div>
 
@@ -101,5 +91,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <?= $this->endSection() ?>
+<?= $this->endSection() ?>

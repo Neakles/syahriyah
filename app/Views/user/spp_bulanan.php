@@ -57,13 +57,9 @@
                                                     <?php } ?></td>
                                                 <td>
                                                     <div class="form-button-action">
-<<<<<<< HEAD
                                                         <a href="<?= base_url(
                                                                         'pembayaran/delete_spp/' .  $a->id_transaksi . '/' . $id_pem_bulan . '/' . $a->nis
                                                                     ) ?>" class="btn-danger btn-lg">Delete</i></a>
-=======
-                                                        <a href="<?= base_url('admin/cetak_perangsuran/' . $a->id) ?>" class="btn btn-link btn-primary btn-lg"><i class="fa fa-print"></i></a>
->>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73
                                                     </div>
                                                 </td>
                                             </tr>
@@ -234,8 +230,4 @@
         });
     });
 </script>
-<<<<<<< HEAD
 <?= $this->endSection() ?>
-=======
-<?= $this->endSection(); ?>
->>>>>>> 3b40f7691990efadceac49cb0e055ce25c55af73

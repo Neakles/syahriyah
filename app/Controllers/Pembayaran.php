@@ -74,32 +74,8 @@ class Pembayaran extends BaseController
         $data['tgl_bayar'] = date('Y-m-d');
         $data['id_pem_bulan'] = $id;
         $data['tahun_ajaran'] = $this->userModel->tampil_datatahun();
-
-        $data['thaj'] = $this->db
-            ->query(
-                "SELECT b.besar_spp 
-						FROM pembayaran_bulanan a
-						inner join tahun_ajaran b ON a.tahun_ajaran = b.tahun_ajaran  
-						WHERE a.id_pem_bulan='" .
-                    $id .
-                    "'"
-            )
-            ->getrow()->besar_spp;
-        $data['id_tahun'] = $this->db
-            ->query(
-                "SELECT b.id_tahun 
-						FROM pembayaran_bulanan a
-						inner join tahun_ajaran b ON a.tahun_ajaran = b.tahun_ajaran  
-						WHERE a.id_pem_bulan='" .
-                    $id .
-                    "'"
-            )
-            ->getrow()->id_tahun;
-        $data['pem_bulan'] = $this->userModel->getsppbulanan($id, $nis);
-        $data['disbln'] =  $this->userModel->getbln($id, $nis);
-        $data['bln'] = $this->userModel->tampil_databulan();
-        return view('/user/spp_bulanan', $data);
     }
+
     public function tambah_aksi()
     {
         $db = \Config\Database::connect();

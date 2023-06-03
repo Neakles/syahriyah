@@ -229,7 +229,8 @@ class Admin extends BaseController
     {
         $data = [
             'nis' => $this->request->getPost('nis'),
-            'jenis_pembayaran' => $this->request->getPost('j_pem'),
+            'jenis_pembayaran' => "Syahriah",
+            'bulan' => $this->request->getPost('bulan'),
             'tahun_ajaran' => $this->request->getPost('tahun'),
         ];
 
