@@ -7,6 +7,12 @@ use App\Models\UsersModel;
 
 class User extends BaseController
 {
+    private $db;
+    private $builder;
+    private $gender;
+    private $kamar;
+    private $bill;
+    private $UsersModel;
     public function __construct()
     {
         $this->db           = \Config\Database::connect();

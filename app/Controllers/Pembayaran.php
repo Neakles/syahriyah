@@ -10,7 +10,7 @@ use Throwable;
 class Pembayaran extends BaseController
 {
     use GlobalTrait;
-    protected $db, $builder;
+    protected $db, $builder, $gender, $bill, $spp_bulanan, $userModel;
 
     public function __construct()
     {

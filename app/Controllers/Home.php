@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
+    private $db;
+    private $builder;
     public function __construct()
     {
         $this->db = \Config\Database::connect();

@@ -9,7 +9,7 @@ use Throwable;
 class Admin extends BaseController
 {
     use GlobalTrait;
-    protected $db, $builder;
+    protected $db, $builder, $gender, $kamar, $bill, $userModel;
 
     public function __construct()
     {
