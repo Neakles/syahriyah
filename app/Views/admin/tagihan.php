@@ -30,23 +30,20 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Jenis Pembayaran</th>
+                            <th scope="col">Label Tagihan</th>
                             <th scope="col">Bulan</th>
                             <th scope="col">Tahun</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        $i = 1;
-                        foreach ($tagihan as $bill) : ?>
+                        <?php foreach ($tagihan as $key => $val) : ?>
                             <tr>
-                                <th scope="row"><?= $i++ ?></th>
-                                <td><?= $bill->jenis_pembayaran ?></td>
-                                <td></td>
-                                <td><?= $bill->tahun_ajaran ?></td>
+                                <th scope="row"><?= ($key + 1) ?></th>
+                                <td><?= $val["nama"] ?></td>
+                                <td><?= $val["bulan"] ?></td>
+                                <td><?= $val["tahun"] ?></td>
                             </tr>
-                        <?php endforeach;
-                        ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -69,15 +66,33 @@
 
                                         <div class="row justify-content-center mt-3 mb-4">
                                             <div class="col">
-                                                <label for="bulan" class="form-label">Bulan</label>
-                                                <input type="text" class="form-control" id="bulan" name="bulan" placeholder="Masukkan Bulan" required>
+                                                <label for="nama" class="form-label">Label</label>
+                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Ex: Tagihan bulan Juni" required>
                                             </div>
                                         </div>
 
                                         <div class="row justify-content-center mt-3 mb-4">
-                                            <div class="col">
+                                            <div class="col-lg-6">
+                                                <label for="bulan" class="form-label">Bulan</label>
+                                                <select class="custom-select" name="bulan" id="bulan">
+                                                    <option selected value="0">Pilih Bulan</option>
+                                                    <option value="1">Januari</option>
+                                                    <option value="2">Februari</option>
+                                                    <option value="3">Maret</option>
+                                                    <option value="4">April</option>
+                                                    <option value="5">Mei</option>
+                                                    <option value="6">Juni</option>
+                                                    <option value="7">Juli</option>
+                                                    <option value="8">Agustus</option>
+                                                    <option value="9">September</option>
+                                                    <option value="10">Oktober</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">Desember</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6">
                                                 <label for="tahun" class="form-label">Tahun</label>
-                                                <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Masukkan Tahun" required>
+                                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Masukkan Tahun" required>
                                             </div>
                                         </div>
                                 </div>

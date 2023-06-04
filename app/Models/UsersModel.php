@@ -7,14 +7,14 @@ use CodeIgniter\Model;
 class UsersModel extends Model
 {
     // protected $DBGroup          = "default";
-    protected $table = 'users';
-    protected $primaryKey = 'id';
+    protected $table            = 'users';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $insertID = 0;
-    protected $returnType = 'array';
-    protected $useSoftDeletes = false;
-    protected $protectFields = true;
-    protected $allowedFields = [
+    protected $insertID         = 0;
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = false;
+    protected $protectFields    = true;
+    protected $allowedFields    = [
         'email',
         'username',
         'fullname',
@@ -30,18 +30,18 @@ class UsersModel extends Model
     ];
 
     // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat = 'datetime';
-    protected $createdField = 'created_at';
-    protected $updatedField = 'updated_at';
-    protected $deletedField = 'deleted_at';
+    protected $useTimestamps    = false;
+    protected $dateFormat       = 'datetime';
+    protected $createdField     = 'created_at';
+    protected $updatedField     = 'updated_at';
+    protected $deletedField     = 'deleted_at';
 
     function getusers($nis)
     {
-        $db = \Config\Database::connect();
-        $sql = 'select * from users where nis = ' . $nis . '';
-        $query = $db->query($sql);
-        $results = $query->getResult();
+        $db         = \Config\Database::connect();
+        $sql        = 'select * from users where nis = ' . $nis . '';
+        $query      = $db->query($sql);
+        $results    = $query->getResult();
         return $results;
     }
 

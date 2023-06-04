@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Helpers\DashboardHelper;
+use App\Helpers\TagihanHelper;
 use App\Models\UsersModel;
 use App\Traits\GlobalTrait;
 use Throwable;
@@ -12,6 +13,7 @@ class Admin extends BaseController
     use GlobalTrait;
     protected $db, $builder, $gender, $kamar, $bill, $userModel;
     private $dashboardHelper;
+    private $tagihanHelper;
 
     public function __construct()
     {
@@ -22,13 +24,13 @@ class Admin extends BaseController
         $this->bill             = $this->db->table('pembayaran_bulanan');
         $this->userModel        = new UsersModel;
         $this->dashboardHelper  = new DashboardHelper;
+        $this->tagihanHelper    = new TagihanHelper;
     }
 
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $result = $this->dashboardHelper->tunggakanSantri();
-        // d($result);
+        // $result = $this->dashboardHelper->tunggakanSantri();
         return view('/admin/index', $data);
     }
 
@@ -223,27 +225,23 @@ class Admin extends BaseController
 
     public function tagihan()
     {
-        $data['title'] = 'Tagihan Santri';
-
-        $data['tagihan'] = $this->bill->get()->getResult();
-
-        return view('/admin/tagihan', $data);
+        $data["title"]      = "Tagihan Santri";
+        $data["tagihan"]    = $this->tagihanHelper->getAll();
+        return view("/admin/tagihan", $data);
     }
 
     public function tambahTagihan()
     {
         $data = [
-            'nis' => $this->request->getPost('nis'),
-            'jenis_pembayaran' => "Syahriah",
-            'bulan' => $this->request->getPost('bulan'),
-            'tahun_ajaran' => $this->request->getPost('tahun'),
+            "nama"  => $this->request->getPost("nama"),
+            "bulan" => $this->request->getPost("bulan"),
+            "tahun" => $this->request->getPost("tahun"),
         ];
+        $result = $this->tagihanHelper->insert($data);
 
-        $success = $this->db->table('pembayaran_bulanan')->insert($data);
-
-        if ($success) {
+        if ($result["status"]) {
             session()->setFlashdata('pesan', 'ditambahkan');
-            return redirect()->to(base_url('/admin/tagihan'));
         }
+        return redirect()->to(base_url('/admin/tagihan'));
     }
 }

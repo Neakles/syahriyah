@@ -1,0 +1,10 @@
+-- ALTER TABLE `spp_bulanan` ADD `id_pembayaran_bulanan` INT NULL AFTER `nama_santri`;
+-- ALTER TABLE `pembayaran_bulanan` 
+-- CHANGE `nis` `nis` INT(11) NULL
+-- , CHANGE `jenis_pembayaran` `jenis_pembayaran` VARCHAR(225) NULL
+-- , CHANGE `tahun_ajaran` `tahun_ajaran` VARCHAR(9) NULL;
+-- ALTER TABLE `pembayaran_bulanan` ADD `id_bulan` INT NULL AFTER `jenis_pembayaran`;
+-- ALTER TABLE `pembayaran_bulanan` CHANGE `id_pem_bulan` `id_pem_bulan` INT(11) NOT NULL AUTO_INCREMENT;
+-- ALTER TABLE `spp_bulanan` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
+-- ALTER TABLE `bulan` CHANGE `id_bulan` `id_bulan` INT NULL AUTO_INCREMENT;
+-- ALTER TABLE `tugas_akhir`.`spp_bulanan` DROP PRIMARY KEY, ADD PRIMARY KEY (`id`) USING BTREE;
