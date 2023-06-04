@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Helpers\DashboardHelper;
 use App\Models\UsersModel;
 use App\Traits\GlobalTrait;
 use Throwable;
@@ -10,20 +11,24 @@ class Admin extends BaseController
 {
     use GlobalTrait;
     protected $db, $builder, $gender, $kamar, $bill, $userModel;
+    private $dashboardHelper;
 
     public function __construct()
     {
-        $this->db           = \Config\Database::connect();
-        $this->builder      = $this->db->table('users');
-        $this->gender       = $this->db->table('gender');
-        $this->kamar        = $this->db->table("kamar_santri");
-        $this->bill         = $this->db->table('pembayaran_bulanan');
-        $this->userModel    = new UsersModel();
+        $this->db               = \Config\Database::connect();
+        $this->builder          = $this->db->table('users');
+        $this->gender           = $this->db->table('gender');
+        $this->kamar            = $this->db->table("kamar_santri");
+        $this->bill             = $this->db->table('pembayaran_bulanan');
+        $this->userModel        = new UsersModel;
+        $this->dashboardHelper  = new DashboardHelper;
     }
 
     public function index()
     {
         $data['title'] = 'Dashboard';
+        $result = $this->dashboardHelper->tunggakanSantri();
+        // d($result);
         return view('/admin/index', $data);
     }
 

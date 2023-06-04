@@ -66,18 +66,55 @@
 
     <div class="row">
 
-        <!-- <div class="col-lg-6">
-
-            <div class="card shadow mb-4">
+        <div class="col-lg-6">
+            <div class="card mb-4">
                 <div class="card-header">
-                    Santri Dengan Tunggakan Terbanyak
+                    Tunggakan Santri
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <td>No</td>
+                                <td>Nama</td>
+                                <td>Nominal</td>
+                                <td>Kamar</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Cahyo</td>
+                                <td>2.250.000</td>
+                                <td>Kalijaga</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Cahyo</td>
+                                <td>2.250.000</td>
+                                <td>Kalijaga</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Cahyo</td>
+                                <td>2.250.000</td>
+                                <td>Kalijaga</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Tunggakan Santri
                 </div>
                 <div class="card-body">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur natus quia illo nobis maiores inventore iusto corporis, magnam quasi temporibus iure laboriosam reiciendis quibusdam nemo? Voluptatem eos facere possimus dolorem?
                 </div>
             </div>
-
-        </div> -->
+        </div>
 
     </div>
 
