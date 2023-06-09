@@ -15,9 +15,9 @@
     <!-- Sidebar of Admin -->
     <?php if (in_groups('admin')): ?>
 
-        <div class="sidebar-heading">
+        <!-- <div class="sidebar-heading">
             Admin
-        </div>
+        </div> -->
 
         <li class="nav-item">
             <a class="nav-link" href=" <?= base_url('admin') ?>">
@@ -26,8 +26,18 @@
             </a>
         </li>
 
+        <div class="sidebar-heading">
+            Data Santri
+        </div>
+
         <li class="nav-item">
-            <a class="nav-link" href="/admin/data_santri">
+            <a class="nav-link" href="/admin/kamar">
+                <i class="fas fa-fw fa-bed"></i>
+                <span>Kamar Santri</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/santri">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Data Santri</span></a>
         </li>
@@ -47,7 +57,12 @@
                 <i class="fa-solid fa-money-bill-wave"></i>
                 <span>Laporan</span></a>
         </li>
-        <hr class="sidebar-divider ">
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/pengaturan">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <span>Pengaturan</span></a>
+        </li>
+        <hr class="sidebar-divider">
 
     <?php endif; ?>
 

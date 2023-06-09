@@ -7,4 +7,10 @@
 -- ALTER TABLE `pembayaran_bulanan` CHANGE `id_pem_bulan` `id_pem_bulan` INT(11) NOT NULL AUTO_INCREMENT;
 -- ALTER TABLE `spp_bulanan` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
 -- ALTER TABLE `bulan` CHANGE `id_bulan` `id_bulan` INT NULL AUTO_INCREMENT;
--- ALTER TABLE `tugas_akhir`.`spp_bulanan` DROP PRIMARY KEY, ADD PRIMARY KEY (`id`) USING BTREE;
+-- ALTER TABLE `spp_bulanan` DROP PRIMARY KEY, ADD PRIMARY KEY (`id`) USING BTREE;
+-- ALTER TABLE `m_users` CHANGE `user_image` `user_image` VARCHAR(255) NULL DEFAULT 'default.svg';
+-- ALTER TABLE `m_users` CHANGE `active` `active` TINYINT(1) NULL DEFAULT '0', CHANGE `force_pass_reset` `force_pass_reset` TINYINT(1) NULL DEFAULT '0';
+-- CREATE TABLE `m_roles` ( `id` INT NULL AUTO_INCREMENT , `nama` INT NULL , PRIMARY KEY (`id`));
+-- ALTER TABLE `m_roles` CHANGE `nama` `nama` VARCHAR(64) NULL DEFAULT NULL;
+-- ALTER TABLE `m_roles` ADD `is_admin` TINYINT(1) NULL DEFAULT '0' AFTER `nama`;
+-- ALTER TABLE `m_users` ADD `m_roles_id` INT NULL AFTER `thn_masuk`;
