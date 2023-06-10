@@ -22,6 +22,9 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-end">
+            <a type="button" class="btn btn-primary py-1 .col-auto mx-1" href="/admin/tagihan/pengaturan">
+                <i class="fa-solid fa-fw fa-gear mr-2"></i>Pengaturan Harga
+            </a>
             <button type="button" class="btn btn-primary py-1 .col-auto mx-1" data-toggle="modal" data-target="#tambah_tagihan"><i class="fa-solid fa-fw fa-plus mr-2"></i>Tambah Tagihan</button>
         </div>
         <div class="card-body">

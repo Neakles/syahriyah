@@ -58,7 +58,7 @@
                 <span>Laporan</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/admin/pengaturan">
+            <a class="nav-link" href="/admin/tagihan/pengaturan">
                 <i class="fa-solid fa-money-bill-wave"></i>
                 <span>Pengaturan</span></a>
         </li>

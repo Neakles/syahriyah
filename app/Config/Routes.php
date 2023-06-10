@@ -56,7 +56,6 @@ $routes->post("/profile/(:num)", "User::updateProfile/$1");
 $routes->group("admin", function ($routes) {
     $routes->get("/",               [Admin::class, "index"],        ["filter" => "role:admin"]);
     $routes->get("index",           [Admin::class, "index"],        ["filter" => "role:admin"]);
-    $routes->get("tagihan",         [Admin::class, "tagihan"],      ["filter" => "role:admin"]);
     $routes->get("laporan",         [Admin::class, "laporan"],      ["filter" => "role:admin"]);
     $routes->get("kamar",           [Admin::class, "kamar"]);
     
@@ -69,10 +68,17 @@ $routes->group("admin", function ($routes) {
         [
             "filter" => "role:admin",
         ]);
-    $routes->group("pengaturan", function($routes) {
-        $routes->get("/", [PengaturanController::class, "index"]);
-    });
     
+    // Tagihan
+    $routes->group("tagihan", function ($routes) {
+        // Pengaturan
+        $routes->group("pengaturan", function ($routes) {
+            $routes->post("save",    [PengaturanController::class, "save"]);
+            $routes->get("/",       [PengaturanController::class, "index"]);
+        });
+
+        $routes->get("/",           [Admin::class, "tagihan"],      ["filter" => "role:admin"]);
+    });
         
     // Santri
     $routes->group("santri", function ($routes) {

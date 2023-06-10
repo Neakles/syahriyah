@@ -22,9 +22,9 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="alert alert-info" role="alert">
-                Harga Khusus ditujukan untuk santri yang kurang mampu
+                <i class="fa fw fa-info-circle mr-2"></i> Harga Khusus ditujukan untuk santri yang kurang mampu
             </div>
-            <form action="/admin/santri/save" method="post">
+            <form action="/admin/tagihan/pengaturan/save" method="post">
                 <?= csrf_field() ?>
 
                 <div class="row justify-content-center mt-3 mb-4">
@@ -34,7 +34,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rp</span>
                             </div>
-                            <input type="text" class="form-control text-right" id="harga_normal" name="harga_normal" placeholder="" required>
+                            <input type="text" class="form-control text-right" id="harga_normal" name="harga_normal" placeholder="" value="<?= $pengaturan["harga_normal"] ?>" required>
                             <div class="input-group-append">
                                 <span class="input-group-text">/bulan</span>
                             </div>
@@ -50,7 +50,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rp</span>
                             </div>
-                            <input type="text" class="form-control text-right" id="harga_khusus" name="harga_khusus" placeholder="" required>
+                            <input type="text" class="form-control text-right" id="harga_khusus" name="harga_khusus" placeholder="" value="<?= $pengaturan["harga_khusus"] ?>" required>
                             <div class="input-group-append">
                                 <span class="input-group-text">/bulan</span>
                             </div>
