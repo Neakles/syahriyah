@@ -57,7 +57,6 @@ $routes->group("admin", function ($routes) {
     $routes->get("/",               [Admin::class, "index"],        ["filter" => "role:admin"]);
     $routes->get("index",           [Admin::class, "index"],        ["filter" => "role:admin"]);
     $routes->get("laporan",         [Admin::class, "laporan"],      ["filter" => "role:admin"]);
-    $routes->get("kamar",           [Admin::class, "kamar"]);
     
     $routes->get("santri/(:num)",   [Admin::class, "laporan_syahriah/$1"],  ["filter" => "role:admin"]);
     $routes->get("pembayaran",      [Pembayaran::class, "index"],           ["filter" => "role:admin"]);
@@ -83,8 +82,9 @@ $routes->group("admin", function ($routes) {
     // Santri
     $routes->group("santri", function ($routes) {
         $routes->post("save",           [SantriController::class, "save"],      ["filter" => "role:admin"]);
-        $routes->post("update",         [SantriController::class, "update"],      ["filter" => "role:admin"]);
-        $routes->get("detail/(:num)",   [SantriController::class, "detail/$1"],            ["filter" => "role:admin"]);
+        $routes->post("update",         [SantriController::class, "update"],    ["filter" => "role:admin"]);
+        $routes->get("detail/(:num)",   [SantriController::class, "detail/$1"], ["filter" => "role:admin"]);
+        $routes->get("kamar",           [SantriController::class, "kamar"],    ["filter" => "role:admin"]);
         $routes->get("/",               [SantriController::class, "santri"],    ["filter" => "role:admin"]);
     });
 });

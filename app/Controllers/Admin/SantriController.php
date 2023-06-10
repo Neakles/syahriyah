@@ -30,9 +30,19 @@ class SantriController extends BaseController {
         return view("admin/data_santri", $data);
     }
 
-    public function save(){
+    public function kamar(){
+        $result = $this->kamarHelper->getAll();
 
-        dd($this->request->getPost());
+        $data["title"]      = "Kamar Santri";
+        $data["listKamar"]  = $result["status"] ? $this->kamarHelper->getAll()["data"] : [];
+
+        return view("/admin/kamar", $data);
+    }
+
+    public function save(){
+        $payload = $this->request->getPost();
+        $helper = $this->helper->save($payload);
+        return redirect()->to('/admin/santri');
     }
 
     public function update(){

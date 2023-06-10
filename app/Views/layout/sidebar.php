@@ -31,7 +31,7 @@
         </div>
 
         <li class="nav-item">
-            <a class="nav-link" href="/admin/kamar">
+            <a class="nav-link" href="/admin/santri/kamar">
                 <i class="fas fa-fw fa-bed"></i>
                 <span>Kamar Santri</span></a>
         </li>
