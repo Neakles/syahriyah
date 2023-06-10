@@ -3,8 +3,14 @@
 namespace App\Controllers;
 
 use App\Helpers\DashboardHelper;
+use App\Helpers\KamarHelper;
+use App\Helpers\SantriHelper;
+use App\Helpers\TagihanHelper;
+
 use App\Models\UsersModel;
+
 use App\Traits\GlobalTrait;
+
 use Throwable;
 
 class Admin extends BaseController
@@ -12,6 +18,7 @@ class Admin extends BaseController
     use GlobalTrait;
     protected $db, $builder, $gender, $kamar, $bill, $userModel;
     private $dashboardHelper;
+    private $tagihanHelper;
 
     public function __construct()
     {
@@ -22,16 +29,36 @@ class Admin extends BaseController
         $this->bill             = $this->db->table('pembayaran_bulanan');
         $this->userModel        = new UsersModel;
         $this->dashboardHelper  = new DashboardHelper;
+        $this->tagihanHelper    = new TagihanHelper;
     }
 
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $result = $this->dashboardHelper->tunggakanSantri();
-        // d($result);
+        // $result = $this->dashboardHelper->tunggakanSantri();
         return view('/admin/index', $data);
     }
+    
+    public function kamar(){
+        $helper = new KamarHelper;
 
+        $data["title"]      = "Kamar Santri";
+        $data["listKamar"]  = $helper->getAll()["data"];
+
+        return view("/admin/kamar", $data);
+    }
+
+    public function santri(){
+        $helper = new SantriHelper;
+        $result = $helper->getAll();
+
+        $data["title"]          = "Data Santri";
+        $data["listSantri"]     = $result["status"] ? $result["data"] : [];
+
+        return view('admin/data_santri', $data);
+    }
+
+    // Tidak dipakai
     public function data_santri()
     {
         $data['title'] = 'Data Santri';
@@ -73,13 +100,12 @@ class Admin extends BaseController
         echo json_encode($kamar_santri);
     }
 
-    public function detail($id = 0)
+    public function detail($id)
     {
         $data['title'] = 'Detail Santri';
+        $helper = new SantriHelper;
 
-        // builder for detail santri
-        $this->builder->where('users.id', $id);
-        $data['user'] = $this->builder->get()->getRow();
+        $data['user'] = $helper->detail($id)["data"];
         return view('admin/detail', $data);
 
         if (empty($data['user'])) {
@@ -223,27 +249,23 @@ class Admin extends BaseController
 
     public function tagihan()
     {
-        $data['title'] = 'Tagihan Santri';
-
-        $data['tagihan'] = $this->bill->get()->getResult();
-
-        return view('/admin/tagihan', $data);
+        $data["title"]      = "Tagihan Santri";
+        $data["tagihan"]    = $this->tagihanHelper->getAll();
+        return view("/admin/tagihan", $data);
     }
 
     public function tambahTagihan()
     {
         $data = [
-            'nis' => $this->request->getPost('nis'),
-            'jenis_pembayaran' => "Syahriah",
-            'bulan' => $this->request->getPost('bulan'),
-            'tahun_ajaran' => $this->request->getPost('tahun'),
+            "nama"  => $this->request->getPost("nama"),
+            "bulan" => $this->request->getPost("bulan"),
+            "tahun" => $this->request->getPost("tahun"),
         ];
+        $result = $this->tagihanHelper->insert($data);
 
-        $success = $this->db->table('pembayaran_bulanan')->insert($data);
-
-        if ($success) {
+        if ($result["status"]) {
             session()->setFlashdata('pesan', 'ditambahkan');
-            return redirect()->to(base_url('/admin/tagihan'));
         }
+        return redirect()->to(base_url('/admin/tagihan'));
     }
 }

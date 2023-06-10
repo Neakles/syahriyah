@@ -46,13 +46,13 @@
                                             <h4>
                                                 <th>Jenis Kelamin</th>
                                             </h4>
-                                            <td><span>: <?= $user->gender_id == 1 ? "Laki-laki" : "Perempuan"; ?></span></td>
+                                            <td><span>: <?= $user->gender ?></span></td>
                                         </tr>
                                         <tr>
                                             <h4>
                                                 <th>Kamar Santri</th>
                                             </h4>
-                                            <td><span>: <?= $user->kamar; ?></span></td>
+                                            <td><span>: <?= $user->kamar_nama; ?></span></td>
                                         </tr>
                                         <tr>
                                             <h4>
@@ -74,7 +74,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <small><a href="<?= base_url('admin/data_santri'); ?>">&laquo; back to data santri</a></small>
+                                <small><a href="<?= base_url('admin/santri'); ?>">&laquo; Back to data santri</a></small>
                             </div>
                         </div>
                         <div class="col-md-4">
