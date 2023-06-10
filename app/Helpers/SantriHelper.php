@@ -50,5 +50,29 @@ class SantriHelper {
             ];
         }
     }
-    
+
+    public function update($payload, $id){
+        try {            
+            $this->db->transBegin();
+
+            unset($payload["id"]);
+            unset($payload["csrf_test_name"]);
+
+            $result = $this->model->update($id, $payload);
+
+            $this->db->transCommit();
+            return [
+                "status"    => true,
+                "data"      => $result
+            ];
+        } catch (Throwable $th) {
+            $this->db->transRollback();
+            $this->logError($th);
+            return [
+                "status"    => false,
+                "message"   => "Terjadi kesalahan pada server",
+                "dev"       => $th->getMessage() . " at line " . $th->getLine()
+            ];
+        }
+    }
 }

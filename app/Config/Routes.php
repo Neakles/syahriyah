@@ -73,16 +73,17 @@ $routes->group("admin", function ($routes) {
     $routes->group("tagihan", function ($routes) {
         // Pengaturan
         $routes->group("pengaturan", function ($routes) {
-            $routes->post("save",    [PengaturanController::class, "save"]);
+            $routes->post("save",   [PengaturanController::class, "save"]);
             $routes->get("/",       [PengaturanController::class, "index"]);
         });
 
-        $routes->get("/",           [Admin::class, "tagihan"],      ["filter" => "role:admin"]);
+        $routes->get("/",   [Admin::class, "tagihan"],      ["filter" => "role:admin"]);
     });
         
     // Santri
     $routes->group("santri", function ($routes) {
         $routes->post("save",           [SantriController::class, "save"],      ["filter" => "role:admin"]);
+        $routes->post("update",         [SantriController::class, "update"],      ["filter" => "role:admin"]);
         $routes->get("detail/(:num)",   [SantriController::class, "detail/$1"],            ["filter" => "role:admin"]);
         $routes->get("/",               [SantriController::class, "santri"],    ["filter" => "role:admin"]);
     });

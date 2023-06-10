@@ -35,6 +35,12 @@ class SantriController extends BaseController {
         dd($this->request->getPost());
     }
 
+    public function update(){
+        $payload = $this->request->getPost();
+        $helper = $this->helper->update($payload, $payload["id"]);
+        return redirect()->to('/admin/santri');
+    }
+
     public function detail($id)
     {
         $data["title"] = "Detail Santri";

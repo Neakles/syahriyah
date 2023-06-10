@@ -14,18 +14,18 @@ class SantriModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = "array";
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
+    protected $useSoftDeletes   = true;
+    protected $protectFields    = false;
+
+    // Dates
+    protected $useTimestamps = false;
+    protected $dateFormat    = "datetime";
+    protected $createdField  = "created_at";
+    protected $updatedField  = "updated_at";
+    protected $deletedField  = "deleted_at";
 
     // Validation
     protected $validationRules = [];
-
-    protected $db;
-
-    public function __construct()
-    {
-        $this->db = Database::connect();
-    }
 
     public function getSantri($id = null){
         $arrSelect = [
@@ -40,6 +40,7 @@ class SantriModel extends Model
             "mu.username",
             "mu.email",
             "mu.gender",
+            "mu.m_kamar_id",
             "mk.nama AS kamar_nama",
             "mk.gender AS kamar_jenis"
         ];

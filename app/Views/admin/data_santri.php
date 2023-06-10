@@ -193,7 +193,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Edit Data Santri1</h4>
+                <h4 class="modal-title">Edit Data <?= $santri->fullname ?></h4>
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -201,32 +201,42 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col">
-                        <form action="/admin/edit" method="post">
+                        <form action="/admin/santri/update" method="post">
                             <?= csrf_field() ?>
                             <input type="hidden" name="id" id="id-santri" value="<?= $santri->id ?>">
-                            <div class="row justify-content-center mt-3 mb-4">
-                                <div class="col">
-                                    <label for="nama" class="form-label">Nama Santri
-                                    </label>
-                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Santri" value="<?= $santri->fullname ?>" required>
+                            <h5>Data Santri</h5>
+                            <hr>
+                            <div class="row justify-content-start mt-3 mb-3">
+                                <div class="col-6">
+                                    <label for="nis" class="form-label">Nomor Induk</label>
+                                    <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan Induk Santri" value="<?= $santri->nis ?>" required>
                                 </div>
+                            </div>
+                            <div class="row justify-content-center mb-3">
                                 <div class="col">
-                                    <label for="username" class="form-label">Username / NIS
-                                    </label>
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username / NIS" value="<?= $santri->username ?>" required>
+                                    <label for="fullname" class="form-label">Nama Santri</label>
+                                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Masukkan Nama Santri" value="<?= $santri->fullname ?>" required>
+                                </div>
+                                
+                                <div class="col-6">
+                                    <label for="no_telp" class="form-label">No Telepon Santri</label>
+                                    <input type="number" class="form-control" id="no_telp" name="no_telp" placeholder="Masukkan No Telepon Santri" value="<?= $santri->no_telp ?>" required>
                                 </div>
                             </div>
 
-                            <div class="row justify-content-center mb-4">
-                                <div class="col">
-                                    <label for="email" class="form-label">Email
-                                    </label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" value="<?= $santri->email ?>" required>
+                            <div class="row justify-content-start mb-3">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="kategori">Kategori</label>
+                                        <select id="kategori" name="kategori" class="form-control" required>
+                                            <option value="mampu" selected>Mampu</option>
+                                            <option value="tidak mampu">Tidak Mampu</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <label for="no_tlp" class="form-label">No Telepon Santri
-                                    </label>
-                                    <input type="number" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan No Telepon Santri" value="<?= $santri->no_telp ?>" required>
+                                <div class="col-3">
+                                    <label for="datepicker" class="form-label">Tahun Masuk</label>
+                                    <input type="year" class="form-control" id="datepicker" name="thn_masuk" placeholder="Pilih Tahun Masuk" value="<?= $santri->thn_masuk ?>" required>
                                 </div>
                             </div>
 
@@ -235,40 +245,50 @@
                                     <div class="form-group">
                                         <label for="gender">Jenis Kelamin</label>
                                         <select id="gender" name="gender" class="form-control" required>
-                                            <option value="" selected disabled>Pilih Jenis Kelamin</option>
+                                            <option value="laki-laki" selected>Laki-laki</option>
+                                            <option value="perempuan">Perempuan</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="kamar">Kamar</label>
-                                        <select id="kamar" name="kamar" class="form-control" required>
-                                            <option value="" selected disabled>-- Pilih Jenis Kelamin --</option>
+                                        <label for="m_kamar_id">Kamar</label>
+                                        <select id="m_kamar_id" name="m_kamar_id" class="form-control" required>
+                                            <?php foreach($kamar as $key => $val) :?>
+                                                <option value="<?= $val["id"] ?>" class="text-capitalize"
+                                                    <?= $val["id"] == $santri->m_kamar_id ? "selected" : "" ?>
+                                                ><?= $val["nama"] ?>
+                                                    <span class="text-capitalize">
+                                                        (<?= $val["gender"] ?>)
+                                                    </span>
+                                                </option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row justify-content-center mb-4">
+                            <div class="row justify-content-center mb-3">
                                 <div class="col">
-                                    <label for="text" class="form-label">Nama Wali Santri
-                                    </label>
+                                    <label for="text" class="form-label">Nama Wali Santri</label>
                                     <input type="wali" class="form-control" id="wali" name="wali" placeholder="Masukkan Nama Wali Santri" value="<?= $santri->wali ?>" required>
                                 </div>
                                 <div class="col">
-                                    <label for="no_wali" class="form-label">No Telepon Wali Santri
-                                    </label>
+                                    <label for="no_wali" class="form-label">No Telepon Wali Santri</label>
                                     <input type="number" class="form-control" id="no_wali" name="no_wali" placeholder="Masukkan No Telepon Wali Santri" value="<?= $santri->no_wali ?>" required>
                                 </div>
                             </div>
 
+                            <h5>Data Akun</h5>
+                            <hr>
                             <div class="row justify-content-center mb-4">
-                                <div class="col-3">
-                                    <label for="datepicker" class="form-label">Tahun Masuk
-                                    </label>
-                                    <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Pilih Tahun Masuk" value="<?= $santri->thn_masuk ?>" required>
+                                <div class="col">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" value="<?= $santri->username ?>" required>
                                 </div>
-                                <div class="col-9">
+                                <div class="col">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" value="<?= $santri->email ?>" required>
                                 </div>
                             </div>
                     </div>
