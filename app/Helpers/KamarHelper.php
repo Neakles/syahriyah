@@ -20,7 +20,7 @@ class KamarHelper {
 
     public function getAll(){
         try {
-            $result = $this->model->findAll();
+            $result = $this->model->orderBy("nama ASC, gender ASC")->findAll();
             return [
                 "status"    => true,
                 "data"      => $result

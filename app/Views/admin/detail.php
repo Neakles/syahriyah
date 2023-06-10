@@ -9,9 +9,9 @@
 
         <div class="col-lg-8">
             <div class="card shadow mb-4">
-                <div class="card-header py-1">
+                <!-- <div class="card-header py-1">
                     <button type="button" class="btn btn-warning py-1 .col-auto mx-1 my-2" data-toggle="modal" data-target="#modal_tambah"><i class="fa-solid fa-fw fa-edit mr-2"></i>Edit</button>
-                </div>
+                </div> -->
                 <div class="card" style="max-width: 100%;">
                     <div class="row g-0">
                         <div class="col-md-8">

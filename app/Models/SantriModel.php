@@ -18,7 +18,7 @@ class SantriModel extends Model
     protected $protectFields    = false;
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = "datetime";
     protected $createdField  = "created_at";
     protected $updatedField  = "updated_at";
@@ -39,6 +39,7 @@ class SantriModel extends Model
             "mu.user_image",
             "mu.username",
             "mu.email",
+            "mu.kategori",
             "mu.gender",
             "mu.m_kamar_id",
             "mk.nama AS kamar_nama",
@@ -51,7 +52,7 @@ class SantriModel extends Model
         if($id != null)
             $result = $result->where("mu.id", $id);
 
-        $result = $result->get();
+        $result = $result->orderBy("fullname", "ASC")->get();
         if($id != null){
             $result = $result->getFirstRow();
         }else{
