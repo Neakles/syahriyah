@@ -41,10 +41,9 @@
                     </thead>
                     <tbody>
                         <?php
-                        $i = 1;
-                        foreach ($listSantri as $santri) : ?>
+                        foreach ($listSantri as $key => $santri) : ?>
                             <tr>
-                                <th scope="row"><?= $i++ ?></th>
+                                <th scope="row"><?= ++$key ?></th>
                                 <td><?= $santri->nis ?></td>
                                 <td class="text-capitalize"><?= $santri->fullname ?></td>
                                 <td class="text-lowercase"><?= $santri->email ?></td>

@@ -25,12 +25,13 @@ class PengaturanController extends BaseController {
         $data["pengaturan"] = $helper["status"] ? $helper["data"] : [];
         return view("/admin/pengaturan", $data);
     }
-    
+
     public function save(){
         $payload = [
             "harga_normal"  => $this->request->getPost("harga_normal"),
             "harga_khusus"  => $this->request->getPost("harga_khusus")
         ];
         $helper = $this->helper->save($payload, $this->id);
+        return redirect()->to('/admin/tagihan');
     }
 }

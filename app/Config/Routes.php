@@ -3,11 +3,11 @@
 namespace Config;
 
 use App\Controllers\Admin;
-use App\Controllers\Admin\Kamar;
+
 use App\Controllers\Admin\PengaturanController;
 use App\Controllers\Admin\SantriController;
+
 use App\Controllers\Pembayaran;
-use App\Helpers\PengaturanHelper;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -57,10 +57,10 @@ $routes->group("admin", function ($routes) {
     $routes->get("/",               [Admin::class, "index"],        ["filter" => "role:admin"]);
     $routes->get("index",           [Admin::class, "index"],        ["filter" => "role:admin"]);
     $routes->get("laporan",         [Admin::class, "laporan"],      ["filter" => "role:admin"]);
-    
+
     $routes->get("santri/(:num)",   [Admin::class, "laporan_syahriah/$1"],  ["filter" => "role:admin"]);
     $routes->get("pembayaran",      [Pembayaran::class, "index"],           ["filter" => "role:admin"]);
-    
+
     $routes->get(
         "spp_bulanan/(:num)/(:num)",
         [Pembayaran::class, "spp_bulanan/$1/$1"],
@@ -84,7 +84,7 @@ $routes->group("admin", function ($routes) {
         $routes->post("save",           [SantriController::class, "save"],      ["filter" => "role:admin"]);
         $routes->post("update",         [SantriController::class, "update"],    ["filter" => "role:admin"]);
         $routes->get("detail/(:num)",   [SantriController::class, "detail/$1"], ["filter" => "role:admin"]);
-        $routes->get("kamar",           [SantriController::class, "kamar"],    ["filter" => "role:admin"]);
+        $routes->get("kamar",           [SantriController::class, "kamar"],     ["filter" => "role:admin"]);
         $routes->get("/",               [SantriController::class, "santri"],    ["filter" => "role:admin"]);
     });
 });
