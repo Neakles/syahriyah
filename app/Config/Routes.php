@@ -67,7 +67,7 @@ $routes->group("admin", function ($routes) {
         [
             "filter" => "role:admin",
         ]);
-    
+
     // Tagihan
     $routes->group("tagihan", function ($routes) {
         // Pengaturan
@@ -78,12 +78,13 @@ $routes->group("admin", function ($routes) {
 
         $routes->get("/",   [Admin::class, "tagihan"],      ["filter" => "role:admin"]);
     });
-        
+
     // Santri
     $routes->group("santri", function ($routes) {
         $routes->post("save",           [SantriController::class, "save"],      ["filter" => "role:admin"]);
         $routes->post("update",         [SantriController::class, "update"],    ["filter" => "role:admin"]);
         $routes->get("detail/(:num)",   [SantriController::class, "detail/$1"], ["filter" => "role:admin"]);
+        $routes->get("delete/(:num)",   [SantriController::class, "delete/$1"], ["filter" => "role:admin"]);
         $routes->get("kamar",           [SantriController::class, "kamar"],     ["filter" => "role:admin"]);
         $routes->get("/",               [SantriController::class, "santri"],    ["filter" => "role:admin"]);
     });

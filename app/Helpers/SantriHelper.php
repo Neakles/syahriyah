@@ -1,7 +1,7 @@
 <?php
 namespace App\Helpers;
 
-use App\Models\SantriModel;
+use App\Models\UsersModel;
 use App\Traits\GlobalTrait;
 
 use Throwable;
@@ -14,7 +14,7 @@ class SantriHelper {
     public function __construct()
     {
         $this->db       = \Config\Database::connect();
-        $this->model    = new SantriModel();
+        $this->model    = new UsersModel;
     }
 
     public function getAll(){
@@ -59,6 +59,28 @@ class SantriHelper {
             unset($payload["csrf_test_name"]);
 
             $result = $this->model->update($id, $payload);
+
+            $this->db->transCommit();
+            return [
+                "status"    => true,
+                "data"      => $result
+            ];
+        } catch (Throwable $th) {
+            $this->db->transRollback();
+            $this->logError($th);
+            return [
+                "status"    => false,
+                "message"   => "Terjadi kesalahan pada server",
+                "dev"       => $th->getMessage() . " at line " . $th->getLine()
+            ];
+        }
+    }
+
+    public function delete($id){
+        try {            
+            $this->db->transBegin();
+
+            $result = $this->model->delete($id);
 
             $this->db->transCommit();
             return [

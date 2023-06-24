@@ -14,3 +14,6 @@
 -- ALTER TABLE `m_roles` CHANGE `nama` `nama` VARCHAR(64) NULL DEFAULT NULL;
 -- ALTER TABLE `m_roles` ADD `is_admin` TINYINT(1) NULL DEFAULT '0' AFTER `nama`;
 -- ALTER TABLE `m_users` ADD `m_roles_id` INT NULL AFTER `thn_masuk`;
+-- ALTER TABLE `users` ADD `gender` ENUM('laki-laki','perempuan') NULL AFTER `gender_id`;
+-- ALTER TABLE `users` ADD `m_kamar_id` INT NULL AFTER `gender`;
+-- ALTER TABLE `users` ADD `kategori` ENUM('mampu','tidak mampu') NULL AFTER `thn_masuk`;

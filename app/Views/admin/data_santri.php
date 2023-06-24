@@ -71,7 +71,7 @@
                                         data-no_wali="<?= $santri->no_wali ?>"
                                         data-thn_masuk="<?= $santri->thn_masuk ?>"><i class="fas fa-edit"></i></button>
                                     <a href="<?= base_url(
-                                                    'admin/delete/' . $santri->id
+                                                    'admin/santri/delete/' . $santri->id
                                                 ) ?>" class="btn btn-danger rounded-circle mx-1"><i class="fas fa-trash"></i></a>
                                     <!-- <button type="button" class="btn btn-danger rounded-circle" data-toggle="modal" data-target="#modal_delete"><i class="fas fa-trash"></i></button> -->
                                 </td>
